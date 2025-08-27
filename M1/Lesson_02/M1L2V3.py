@@ -11,12 +11,14 @@ load_dotenv()
 client = openai.OpenAI()
 
 st.title("Hello, GenAI!")
-st.write("This is your first Streamlit app.")
+st.write("This is your 2nd Streamlit app.")
+user_prompt = st.text_input("Enter your prompt here:", "Explain generative AI in one sentence.")
+
 
 response = client.responses.create(
     model="gpt-4o",
     input=[
-        {"role": "user", "content": "Explain generative AI in one sentence."}  # Prompt
+        {"role": "user", "content": user_prompt}  # Prompt
     ],
     temperature=0.7,  # A bit of creativity
     max_output_tokens=100  # Limit response length
